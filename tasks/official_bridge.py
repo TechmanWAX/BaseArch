@@ -50,7 +50,7 @@ class OfficialBridge(Base):
         args = TxArgs(
             _contractL2=eth_client.account.address,
             _l2Value=amount.Wei,
-            _calldata=eth_client.w3.to_bytes(text=''),
+            _calldata=await eth_client.w3.to_bytes(text=''),
             _l2GasLimit=l2_gas_limit,
             _l2GasPerPubdataByteLimit=800,
             _factoryDeps=[],

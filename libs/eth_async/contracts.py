@@ -26,7 +26,7 @@ class Contracts:
         :return Contract | AsyncContract: the token contract instance.
         """
         contract_address = AsyncWeb3.to_checksum_address(contract_address)
-        return self.client.w3.eth.contract(address=contract_address, abi=DefaultABIs.Token)
+        return await self.client.w3.eth.contract(address=contract_address, abi=DefaultABIs.Token)
 
     @staticmethod
     async def get_signature(hex_signature: str) -> list | None:

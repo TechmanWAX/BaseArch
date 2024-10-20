@@ -132,18 +132,18 @@ class Transactions:
             block = await w3.eth.get_block('latest')
 
         block_number = block['number']
-        latest_block_transaction_count = w3.eth.get_block_transaction_count(block_number)
+        latest_block_transaction_count = await w3.eth.get_block_transaction_count(block_number)
         max_priority_fee_per_gas_lst = []
         for i in range(latest_block_transaction_count):
             try:
-                transaction = w3.eth.get_transaction_by_block(block_number, i)
+                transaction = await w3.eth.get_transaction_by_block(block_number, i)
                 if 'maxPriorityFeePerGas' in transaction:
                     max_priority_fee_per_gas_lst.append(transaction['maxPriorityFeePerGas'])
             except Exception:
                 continue
 
         if not max_priority_fee_per_gas_lst:
-            # max_priority_fee_per_gas = w3.eth.max_priority_fee
+            # max_priority_fee_per_gas = await w3.eth.max_priority_fee
             max_priority_fee_per_gas = 0
         else:
             max_priority_fee_per_gas_lst.sort()
@@ -229,7 +229,7 @@ class Transactions:
             SignedTransaction: the signed transaction.
 
         """
-        return self.client.w3.eth.account.sign_transaction(
+        return await self.client.w3.eth.account.sign_transaction(
             transaction_dict=tx_params, private_key=self.client.account.key
         )
 
