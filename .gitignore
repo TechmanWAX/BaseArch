@@ -1,0 +1,6 @@
+.idea/*
+.venv/*
+.git/*
+**/__pycache__/*
+new_wallets.csv
+files/*

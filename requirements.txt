@@ -1,0 +1,11 @@
+python-dotenv==1.0.1
+loguru==0.7.2
+SQLAlchemy==2.0.35
+aiosqlite==0.20.0
+greenlet==3.1.1
+alembic==1.13.3
+web3==7.3.1
+fake-useragent==1.5.1
+curl_cffi==0.7.3
+Faker==30.4.0
+requests==2.32.3
