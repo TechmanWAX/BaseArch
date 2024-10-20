@@ -81,7 +81,7 @@ class Mute(Base):
 
         tx_params = TxParams(
             to=contract.address,
-            data=contract.encodeABI(function_name, args=params.tuple()),
+            data=contract.encode_abi(function_name, args=params.tuple()),
             value=amount.Wei if from_token_is_eth else 0
         )
 

@@ -108,18 +108,18 @@ class Maverick(Base):
                 amount.Wei,
                 amount_out_min.Wei,
             )
-        swap_amount_data = contract.encodeABI('exactInput', args=[swap_amount_args])
+        swap_amount_data = contract.encode_abi('exactInput', args=[swap_amount_args])
 
         if from_token_is_eth:
-            second_item = contract.encodeABI('refundETH', args=[])
+            second_item = contract.encode_abi('refundETH', args=[])
         else:
-            second_item = contract.encodeABI('unwrapWETH9', args=[
+            second_item = contract.encode_abi('unwrapWETH9', args=[
                 amount_out_min.Wei,
                 f'{self.client.account.address}',
             ])
 
         # multicall params (data)
-        swap_data = contract.encodeABI(
+        swap_data = contract.encode_abi(
             'multicall',
             args=[
                 [swap_amount_data, second_item]

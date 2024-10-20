@@ -34,7 +34,7 @@ class Dmail(Base):
 
         tx_params = TxParams(
             to=contract.address,
-            data=contract.encodeABI('send_mail', args=params.tuple()),
+            data=contract.encode_abi('send_mail', args=params.tuple()),
         )
 
         tx = await self.client.transactions.sign_and_send(tx_params=tx_params)

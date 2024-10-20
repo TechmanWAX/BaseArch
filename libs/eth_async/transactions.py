@@ -344,7 +344,7 @@ class Transactions:
         tx_params = {
             'nonce': nonce,
             'to': contract.address,
-            'data': contract.encodeABI('approve', args=tx_args.tuple())
+            'data': contract.encode_abi('approve', args=tx_args.tuple())
         }
 
         if gas_limit:

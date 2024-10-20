@@ -64,7 +64,7 @@ class OfficialBridge(Base):
             'maxPriorityFeePerGas': max_priority_fee_per_gas,
             'maxFeePerGas': await eth_client.transactions.get_base_fee() + max_priority_fee_per_gas,
             'to': contract.address,
-            'data': contract.encodeABI('requestL2Transaction', args=args.tuple()),
+            'data': contract.encode_abi('requestL2Transaction', args=args.tuple()),
             'value': amount.Wei + max_fee.Wei
         }
 
@@ -90,7 +90,7 @@ class OfficialBridge(Base):
             'maxPriorityFeePerGas': AsyncWeb3.to_wei(0.25, 'gwei'),
             'maxFeePerGas': AsyncWeb3.to_wei(0.25, 'gwei'),
             'to': contract.address,
-            'data': contract.encodeABI('withdraw', args=args.tuple()),
+            'data': contract.encode_abi('withdraw', args=args.tuple()),
             'value': amount.Wei
         }
 
