@@ -129,7 +129,7 @@ class Transactions:
         w3.middleware_onion.inject(ExtraDataToPOAMiddleware, layer=0)
 
         if not block:
-            block = w3.eth.get_block('latest')
+            block = await w3.eth.get_block('latest')
 
         block_number = block['number']
         latest_block_transaction_count = w3.eth.get_block_transaction_count(block_number)
