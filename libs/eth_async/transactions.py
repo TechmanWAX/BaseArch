@@ -229,7 +229,7 @@ class Transactions:
             SignedTransaction: the signed transaction.
 
         """
-        return await self.client.w3.eth.account.sign_transaction(
+        return self.client.w3.eth.account.sign_transaction(
             transaction_dict=tx_params, private_key=self.client.account.key
         )
 
